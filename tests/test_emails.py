@@ -35,3 +35,4 @@ def test_email_backend_settings():
         "Убедитесь, что в настройке `EMAIL_FILE_PATH` указан путь `BASE_DIR /"
         " 'sent_emails'`."
     )
+    
