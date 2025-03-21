@@ -32,7 +32,7 @@ class PostForm(forms.ModelForm):
             "is_published",
         )
         exclude = ('author',)
-    
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
