@@ -23,13 +23,15 @@ def csrf_failure(request, reason=""):
 
 
 def page_not_found(request, exception):
-    return render(
-        request,
-        "pages/404.html",
-        {"path": request.path},
-        status=404
-    )
+    """Обработчик ошибки 404."""
+    return render(request, 'pages/404.html', status=404)
 
 
 def server_error(request):
-    return render(request, "pages/500.html", status=500)
+    """Обработчик ошибки 500."""
+    return render(request, 'pages/500.html', status=500)
+
+
+def permission_denied(request, exception):
+    """Обработчик ошибки 403."""
+    return render(request, 'pages/403csrf.html', status=403)

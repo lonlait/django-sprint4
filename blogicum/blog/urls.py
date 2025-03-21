@@ -1,55 +1,45 @@
-from django.urls import path, include
-
+from django.urls import path
 from . import views
 
 app_name = 'blog'
 
-post_patterns = [
+urlpatterns = [
     path('', views.PostListView.as_view(), name='index'),
     path(
-        '<int:post_id>/',
+        'posts/<int:pk>/',
         views.PostDetailView.as_view(),
         name='post_detail'
     ),
     path(
-        'create/',
+        'posts/create/',
         views.PostCreateView.as_view(),
         name='create_post'
     ),
     path(
-        '<int:post_id>/edit/',
+        'posts/<int:pk>/edit/',
         views.PostUpdateView.as_view(),
         name='edit_post'
     ),
     path(
-        '<int:post_id>/delete/',
+        'posts/<int:pk>/delete/',
         views.PostDeleteView.as_view(),
         name='delete_post'
     ),
-]
-
-comment_patterns = [
     path(
-        '<int:post_id>/comment/',
+        'posts/<int:pk>/comment/',
         views.CommentCreateView.as_view(),
         name='add_comment'
     ),
     path(
-        '<int:post_id>/edit_comment/<int:comment_id>/',
+        'posts/<int:pk>/edit_comment/<int:comment_id>/',
         views.CommentUpdateView.as_view(),
         name='edit_comment'
     ),
     path(
-        '<int:post_id>/delete_comment/<int:comment_id>/',
+        'posts/<int:pk>/delete_comment/<int:comment_id>/',
         views.CommentDeleteView.as_view(),
         name='delete_comment'
     ),
-]
-
-urlpatterns = [
-    path('', views.PostListView.as_view(), name='index'),
-    path('posts/', include(post_patterns)),
-    path('posts/', include(comment_patterns)),
     path(
         'category/<slug:category_slug>/',
         views.category_posts,
