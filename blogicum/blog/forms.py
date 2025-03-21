@@ -1,6 +1,7 @@
 from django import forms
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import Comment, Post
 
@@ -31,10 +32,7 @@ class PostForm(forms.ModelForm):
             "is_published",
         )
         exclude = ('author',)
-        widgets = {
-            'pub_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
-        }
-
+    
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -46,3 +44,16 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name')
+
+
+class UserRegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'password1',
+            'password2'
+        )

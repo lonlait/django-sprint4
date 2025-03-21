@@ -19,6 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR / 'templates'
 STATIC_DIR = BASE_DIR / 'static'
 
+# Количество постов на странице
+PAGINATOR_VALUE = 10
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-z)84@yelspqqp%1v@nxwxjn=%i43sr0e!2t86xrz#6_9enyjy+'
 
